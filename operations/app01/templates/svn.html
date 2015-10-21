@@ -1,0 +1,88 @@
+{%extends 'admin_log.html'%}
+{%block page-content%} 
+    <div class="container">
+      <div class="starter-template">
+        </br>
+        </br>
+      </div>
+      <!--重点关注一下-->
+      <div class="well">
+        <form class="form-horizontal" role="form" action="/deployserver/deploy/" method="post" id="Form-DeployProject">
+                                <div class="form-group">
+                                        <label class="col-sm-2 control-label">标题<span style="color:red">*</span></label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="DeployTitle" id="DeployTitle">
+                                        </div>
+                                </div>
+ 
+ 
+                                <div class="form-group">
+                                        <label class="col-sm-2 control-label">发布项目<span style="color:red">*</span></label>
+                                                <div class="col-sm-4">
+                                                        <select class="form-control" name="DeployProject" id="DeployProject" >
+                                                                <option value="0" selected >--项目0--</option>
+                                                                <option value="1" selected >--项目1--</option>
+                                                        </select>
+                                                </div>
+ 
+                                                <div class="col-sm-4">
+                                                        <select class="form-control" name="DeployTransitip" id="DeployTransitip">
+                                                                <option value="0" selected >--可选中转IP--</option>
+                                                        </select>
+                                                                                                        </div>
+ 
+                                                <div class="col-sm-4 col-sm-offset-2" style="margin-top:10px">
+                                                        <div style="border: 1px solid #ccc;border-radius: 6px 6px 6px 6px;">
+                                                                <div class="control-group" style="height:25px;text-align:center;">
+                                                                --选择目标IP--
+                                                                </div>
+                                                                <div class="control-group" style="margin-bottom:6px;margin-left:20px;width:100%" id="div_server">
+                                                                </div>
+                                                        </div>
+                                                </div>
+ 
+                                                <div class="col-sm-4" style="margin-top:10px">
+                                                        <div style="border: 1px solid #ccc;border-radius: 6px 6px 6px 6px;">
+                                                                <div class="control-group" style="height:25px;text-align:center;">
+                                                                --中转IP--
+                                                                </div>
+                                                                <div class="control-group" style="margin-bottom:6px;margin-left:20px;width:100%" id="div_transitip">
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                </div>
+ 
+                                <!-- 重点：easyui-tree -->
+                                <div class="form-group">
+                                        <label class="col-sm-2 control-label">更新文件<span style="color:red">*</span></label>
+                                        <div class="col-sm-9">
+                                                <button type="button" class="btn btn-primary btn-xs" name="reloadAll" onclick="reloadall();">刷新列表</button>
+                                                <button type="button" class="btn btn-primary btn-xs" name="expandAll" onclick="expandall();">展开</button>
+                                                <button type="button" class="btn btn-primary btn-xs" name="collapseAll" onclick="collapseall();">收缩</button>
+                                                <input type="button"  class="btn btn-success btn-xs" id="svnversion" value="SVN版本" disabled="disabled"/>
+ 
+                                        </div>
+                                        <div class="col-sm-9 col-sm-offset-2" style="margin-top:10px">
+                                                <div class="easyui-panel" style="padding:5px;" id="div_filelist">
+                                                        <ul id="file_list" class="easyui-tree"></ul>
+                                                </div>
+                                        </div>
+                                </div>
+ 
+                                <div class="form-group">
+                                        <label class="col-sm-2 control-label">发布说明</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="DeployNotes" id="DeployNotes">
+                                        </div>
+                                </div>
+ 
+                                <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="button" class="btn btn-default" name="b_deploy_reset" onclick="form_deploy_reset();">重置</button>
+                                                <button type="button" class="btn btn-primary" name="b_deploy_upload" onclick="form_deploy();">提交</button>
+                                        </div>
+                                </div>
+        </form>
+    </div>
+   </div>
+  {%endblock%}

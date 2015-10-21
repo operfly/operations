@@ -1,0 +1,97 @@
+# -*- coding: UTF-8 -*-    
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<title>Bootstrap, from Twitter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="/static/css/bootstrap.css" rel="stylesheet">
+	<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="/static/css/responsive-nav.css">
+	<script src="/static/js/responsive-nav.js"></script>
+	<link rel="stylesheet" href="/static/simple/css/a_login_reset.css" />
+    <link rel="stylesheet" href="/static/simple/css/a_login_supersized.css" />
+    <link rel="stylesheet" href="/static/simple/css/a_login_style.css" />
+	        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <script src="{{ cfg_jquery }}"></script>
+        <script src="/static/simple/js/jquery/supersized.3.2.7.min.js" ></script>
+        <script src="/static/simple/js/jquery/supersized-init.js" ></script>
+        <script src="/static/simple/js/jquery/scripts.js" ></script>
+		<script src="/static/simple/js/md5.js" ></script>
+		<script src="/static/simple/js/a_index.js" ></script>	
+	<br/><br/>
+</head>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top" >
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="#">Server name</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a href="/admin_log/">Server Manager</a></li>
+						<li><a href="/application/">application</a></li>
+						<li><a href="/assets/">Assets</a></li>
+						<li><a href="/svn/">Svn</a></li>
+					</ul>
+					    <ul class="nav navbar-nav pull-right">
+							<li><a href="#">{{user.username}}</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Congfiguration <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+								<li><a href="/admin_center/">Admin Center</a></li>
+								<li class="divider"></li>
+								<li><a href="/logout/">Logout</a></li>
+							</ul>
+      </li>
+    </ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+</div>
+	{%block page-content%}
+    <body>
+    <br></br>
+	<td valign="top" >
+	<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>IP</th>
+		<th>HOSTNAME</th>
+		<th>IDC</th>
+		<th>PORT</th>
+		<th>GROUP</th>
+	</tr>
+	</thead>
+<thead>
+{%for ip in ip_list%}
+	<tr>
+		<br>
+		<th>{{ip.id}}</th>
+		<th>{{ip.ip}}</th>
+		<th>{{ip.hostname}}</th>
+		<th>{{ip.idc}}</th>
+		<th>{{ip.port}}</th>
+		<th>{{ip.group}}</th>
+		<br/>
+		{%endfor%}	
+	</tr>
+</thead>
+</table>
+</td>
+	</div>
+    </body>
+</html>
+{%endblock%}
+
